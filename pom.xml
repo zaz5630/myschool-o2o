@@ -12,6 +12,9 @@
     <!--父模块会自动聚合-->
     <modules>
         <module>o2o-common</module>
+        <module>o2o-dao</module>
+        <module>o2o-service</module>
+        <module>o2o-superadmin</module>
     </modules>
 
 
