@@ -15,6 +15,8 @@
         <module>o2o-dao</module>
         <module>o2o-service</module>
         <module>o2o-superadmin</module>
+        <module>o2o-shop</module>
+        <module>o2o-frentend</module>
     </modules>
 
 
