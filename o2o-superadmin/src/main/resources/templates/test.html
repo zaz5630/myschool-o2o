@@ -20,12 +20,12 @@
         </tr>
 
         <tr th:each="area : ${areas}">
-            <td th:text="${area.id}"></td>
-            <td th:text="${area.name}"></td>
-            <td th:text="${area.desc}"></td>
-            <td th:text="${area.prio}"></td>
-            <td th:text="${area.createTime}"></td>
-            <td th:text="${area.lastEditTime}"></td>
+            <td th:text="${area.areaId}"></td>
+            <td th:text="${area.areaName}"></td>
+            <td th:text="${area.areaDesc}"></td>
+            <td th:text="${area.priority}"></td>
+            <td  th:text="${#dates.format(area.createTime, 'yyyy-MM-dd')}"></td>
+            <td  th:text="${#dates.format(area.lastEditTime, 'yyyy-MM-dd')}"></td>
         </tr>
     </table>
 </body>
