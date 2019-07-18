@@ -8,6 +8,25 @@
     <meta charset="UTF-8">
     <title>Title</title>
 </head>
+<script>
+    $(function () {
+        //使用标签选择器选中
+        $("tr:gt(0):odd").css("backgroundColor","red");
+
+        //绑定事件几种方式？？？
+        $("#btn").click(function () {
+            //发送一个Ajax请求
+            $.get("/admin/testAjax",function (data) {
+                //alert(data);
+                //遍历json数据，alert出来
+                //注意：this是dom对象
+                $.each(data,function () {
+                    alert(this.areaId + ":" + this.areaName)
+                })
+            })
+        })
+    })
+</script>
 <body>
     <table class="table">
         <tr>
@@ -27,6 +46,9 @@
             <td  th:text="${#dates.format(area.createTime, 'yyyy-MM-dd')}"></td>
             <td  th:text="${#dates.format(area.lastEditTime, 'yyyy-MM-dd')}"></td>
         </tr>
+
+        <hr />
+        <button type="button" class="btn btn-success" id="btn">TestAjax</button>
     </table>
 </body>
 </html>
