@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <script type="text/javascript" th:src="@{/js/jquery-3.1.0.js}"></script>
+    <script type="text/javascript" th:src="@{/js/echarts.min.js}"></script>
+    <!-- 最新版本的 Bootstrap 核心 CSS 文件 -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css">
+    
+    <script>
+        $(function () {
+            $("#btn").click(function () {
+                //发送Ajax请求
+                $.get("/shop/getData",function (data) {
+                    //若Controller直接返回的是Object，data就可以直接遍历
+/*                    $.each(data,function () {
+                        alert(this.priority + this.areaName)
+                    })*/
+                    //若Controller返回的是Map，data.key就可以直接遍历
+                    var xData = new Array();
+                    var yData = new Array();
+                    $.each(data.areas,function () {
+                        //alert(this.priority + this.areaName)
+                        //向数组中添加数据
+                        xData.push(this.areaName)
+                        yData.push(this.priority)
+                    })
+
+                    // 基于准备好的dom，初始化echarts实例
+                    var myChart = echarts.init(document.getElementById('main'));
+
+                    // 指定图表的配置项和数据
+                    var option = {
+                        title: {
+                            text: 'ECharts 查询后台数据'
+                        },
+                        tooltip: {},
+                        legend: {
+                            data:['权重']
+                        },
+                        xAxis: {
+                            //js的数组
+                          //  data: ["衬衫","羊毛衫","雪纺衫","裤子","高跟鞋","袜子"]
+                            data: xData
+                        },
+                        yAxis: {
+                            min: 1
+                        },
+                        series: [{
+                            name: '权重',
+                            type: 'bar',
+                         //   data: [5, 20, 36, 10, 10, 20]
+                            data: yData
+                        }]
+                    };
+
+                    // 使用刚指定的配置项和数据显示图表。
+                    myChart.setOption(option);
+                })
+            });
+        })
+    </script>
+</head>
+<body>
+    <button type="button" class="btn btn-success" id="btn">权重占比</button>
+    <!-- 为ECharts准备一个具备大小（宽高）的Dom -->
+    <div id="main" style="width: 600px;height:400px;"></div>
+</body>
+</html>

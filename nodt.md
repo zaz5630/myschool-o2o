@@ -1,3 +1,4 @@
+#2019-07-18
 #1.dao层
 1. 需要依赖comomon层
 ~~~xml
@@ -22,4 +23,29 @@
 
 5.遇到的问题
 
+
+#2019-07-19
+1.MyBatis的逆向工程
+
+2.Echarts的使用
+2.1 集成js文件
+<script type="text/javascript" th:src="@{/js/echarts.min.js}"></script>
+
+2.2 需要将静态数据替换成数据库查询出来的动态json数据，并在js中进行解析
+  1 先用area的priority进行模拟，展示柱状图
+  2 店铺某天/某段时间的销售额思路  --折线图
+     1.where条件：某天/某几天 and shop_id = 自己当前的shop_id
+     2.product_id * 数量  -- 某个商品  所有的 sum
+  
+  3 商品销售量的排行思路  ---柱状图 ，本店商品的热度
+       count(product_num) group by  商品_id分组
+    
+  4 商品分类占比  ---饼图
+  
+2.3 注意点  
+    1.后端返回的数据，存放到map结构中，在使用jquery的each遍历时的处理
+        data.key就可以直接遍历
+    2.如何向数组中添加数据
+        xData.push(this.areaName)
+    3.将x轴、y轴的数据替换成需要的即可
 
