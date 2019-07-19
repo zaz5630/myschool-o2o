@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>店铺入住申请</title>
+    <script type="text/javascript" th:src="@{/js/jquery-3.1.0.js}"></script>
+    <script type="text/javascript" th:src="@{/js/bootstrap.min.js}"></script>
+    <script type="text/javascript" th:src="@{/js/echarts.min.js}"></script>
+    <link th:href="@{/css/bootstrap.min.css}" rel="stylesheet" type="text/css" />
+    <script type="text/javascript">
+        function refresh() {
+            document.getElementById('captcha_img').src="/kaptcha?"+Math.random();
+        }
+    </script>
+    <style>
+        form {
+            margin:50px auto;
+        }
+    </style>
+</head>
+<body>
+<p class="lead">Xxxx店铺注册系统</p>
+<form class="form-horizontal">
+    <div class="form-group">
+        <label for="inputShopName" class="col-sm-2 control-label">店铺名称</label>
+        <div class="col-sm-3">
+            <input type="text" class="form-control" id="inputShopName" name="shopName">
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="inputShopDesc" class="col-sm-2 control-label">店铺描述</label>
+        <div class="col-sm-3">
+            <input type="text" class="form-control" id="inputShopDesc" name="shopDesc">
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="inputShopAddr" class="col-sm-2 control-label">店铺地址</label>
+        <div class="col-sm-3">
+            <input type="text" class="form-control" id="inputShopAddr" name="shopDesc">
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="inputPhone" class="col-sm-2 control-label">联系电话</label>
+        <div class="col-sm-3">
+            <input type="text" class="form-control" id="inputPhone" name="phone">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-sm-2 control-label">所在区域</label>
+        <div class="col-sm-1">
+            <select class="form-control" name="areaId">
+                <option>东苑</option>
+                <option>西苑</option>
+                <option>北苑</option>
+                <option>南苑</option>
+            </select>
+        </div>
+    </div>
+    <div class="form-group">
+        <label  class="col-sm-2 control-label">所属分类</label>
+        <div class="col-sm-1">
+            <select class="form-control" name="areaId">
+                <option>二手市场</option>
+                <option>美容美发</option>
+                <option>美食饮品</option>
+                <option>休闲娱乐</option>
+                <option>培训教育</option>
+                <option>交通工具</option>
+            </select>
+        </div>
+        <div class="col-sm-1">
+            <select class="form-control" name="areaId">
+                <option>旧书</option>
+                <option>二手书籍</option>
+            </select>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-sm-2 control-label">门面照</label>
+        <div class="col-sm-2">
+            <input type="file" class="form-control"  name="phone">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-sm-2 control-label">验证码</label>
+        <div class="col-sm-1">
+            <input type="text" class="form-control" name="verifyCodeActual">
+        </div>
+        <div class="col-sm-1">
+            <img id="captcha_img" alt="点击更换" title="点击更换"
+                 onclick="refresh()" src="/kaptcha" />
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-sm-2 control-label"></label>
+        <div class="col-sm-1">
+            <input type="submit" class="form-control btn-success" id="submit" value="注册">
+        </div>
+        <div class="col-sm-1">
+            <input type="reset" class="form-control btn-danger" id="reset" value="重置">
+        </div>
+    </div>
+</form>
+</body>
+</html>

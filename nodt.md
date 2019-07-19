@@ -16,7 +16,6 @@
 
 2.2 配置数据库连接  --- application.yml
 
-
 3.在o2o-superadmin模块，使用SpringBootTest进行测试
 
 4.快捷键：ctrl + i  重写方法【继承抽象类、接口】
