@@ -115,3 +115,17 @@ $("<li id='fff'>aaaa<li>")
   如果只包括文本内容
   text()
   向标签中不断追加内容：append()
+
+使用thymeleaf整合layui
+注意：
+1.我们从layui中copy的代码,
+cols: [[
+                         {type:
+此时themeleaf会报解析错误，需要将两个[分行显示即可
+
+2.表格数据要关注返回的json格式 --- 我们在后台拼接成如下url返回的格式即可
+https://www.layui.com/test/table/demo1.json?page=1&limit=10  
+
+3.解析json格式
+cols#field 替换成自己的josn格式中的data里面的字段即可
+
