@@ -56,5 +56,62 @@
     注册完之后，要跳转到哪个页面？ --- 店铺主页
     
     
+ #2019-07-20
+ 1.补充：统计图部分
+    本店某个分类下最贵的5件商品 --柱状图
+    SELECT norm
+    form prj
+    WHERE prca_id = 11 ORDER BY DESC LIMIT 0,5  
+    商品名称  价格
+ 
+ 2.Ajax加载分类/地区信息   *****
+    注意：换选择的时候，要将之前的内容给清空掉
+ 
+ 3.注册用户--自己实现，身份：个人/店家
+    tb_local_auth：添加一个字段，status  1：个人    2：店家
+    因为：只有注册了用户信息，才能开店，店铺的owner应该从当前登录人的session中获取user_id
     
+ 4.商品信息管理模块    *****
+    enable_status 0 删除  1 新增：自己店铺编辑但没有发布   2 上架：发布  3.下架
+    新增、  修改、查看商品详情、删除、上架、下架
+   
+   在前端能够看到的应该 enable_status=2  ---前端展示系统中，显示商品时，sql中的查询字段
+ 
+5.折线图 ---某个店铺2019年1-12月份，发布的商品数量折线图    *****
+    难点：create_time 如何解析出年、月
+    根据create_time 分组统计数量
+     SELECT t.d,COUNT(*)
+     FROM
+     (
+     SELECT product_id,product_name,create_time,DATE_FORMAT(create_time,'%d') d
+     FROM `tb_product`
+     WHERE DATE_FORMAT(create_time,'%y')=17
+     ) t
+     GROUP BY t.d
+  
+  
+JQuery  内容
+注意：在js中遍历json数组，我们常用的方法
+1.each()
+            $.each(data.areas,function () {
+                //alert(this.priority + this.areaName)
+                //向数组中添加数据
+                xData.push(this.areaName)
+                yData.push(this.priority)
+            })
+2.map()
+        $.get("/shop/categories",function (data) {
+            data.map(function (item) {
+                alert(item.shopCategoryId + ":"+item.shopCategoryName)
+            })
+        })
 
+
+3.在Jquery中，如何创建一个带内容的标签
+$("<li id='fff'>aaaa<li>")
+
+ 如何在一个标签中添加子标签（包括子标签的属性和文本内容）
+  $shopCategory.html($optionEle)
+  如果只包括文本内容
+  text()
+  向标签中不断追加内容：append()
