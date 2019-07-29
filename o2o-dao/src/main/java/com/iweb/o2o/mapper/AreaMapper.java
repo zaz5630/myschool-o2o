@@ -9,7 +9,6 @@ import java.util.List;
  * @author azzhu
  * @create 2019-07-18 13:35:32
  */
-@Mapper
 public interface AreaMapper {
 
     /**

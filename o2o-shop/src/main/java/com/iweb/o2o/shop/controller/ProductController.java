@@ -32,12 +32,12 @@ public class ProductController {
 
     @GetMapping("/list.json")
     @ResponseBody
-    public Object getProducts() {
+    public Object getProducts(@RequestParam("page") Integer page,@RequestParam("limit") Integer limit) {
         Map<String,Object> map = new HashMap<>();
         map.put("code",0);
         map.put("msg","ok");
-        map.put("count",productService.getProducts(null).size());
-        map.put("data",productService.getProducts(null));
+        map.put("count",productService.getProducts(page,limit,null).getPages());
+        map.put("data",productService.getProducts(page,limit,null).getList());
         return map;
     }
 }

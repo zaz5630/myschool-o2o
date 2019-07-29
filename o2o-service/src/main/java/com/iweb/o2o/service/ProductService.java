@@ -1,5 +1,6 @@
 package com.iweb.o2o.service;
 
+import com.github.pagehelper.PageInfo;
 import com.iweb.o2o.entity.Product;
 
 import java.util.List;
@@ -15,5 +16,5 @@ public interface ProductService {
      * @param product
      * @return
      */
-    List<Product> getProducts(Product product);
+    PageInfo getProducts(Integer page,Integer limit,Product product);
 }

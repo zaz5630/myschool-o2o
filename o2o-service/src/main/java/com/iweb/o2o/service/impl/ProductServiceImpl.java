@@ -1,5 +1,7 @@
 package com.iweb.o2o.service.impl;
 
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import com.iweb.o2o.entity.Product;
 import com.iweb.o2o.mapper.ProductMapper;
 import com.iweb.o2o.service.ProductService;
@@ -17,7 +19,9 @@ public class ProductServiceImpl implements ProductService {
     @Autowired
     private ProductMapper productMapper;
     @Override
-    public List<Product> getProducts(Product product) {
-        return productMapper.getProducts(product);
+    public PageInfo getProducts(Integer page,Integer limit,Product product) {
+        PageHelper.offsetPage(page,limit);
+        List<Product> products = productMapper.getProducts(product);
+        return new PageInfo(products);
     }
 }
