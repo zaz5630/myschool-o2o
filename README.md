@@ -129,3 +129,4 @@ https://www.layui.com/test/table/demo1.json?page=1&limit=10
 3.解析json格式
 cols#field 替换成自己的josn格式中的data里面的字段即可
 
+4.自行完成商品管理

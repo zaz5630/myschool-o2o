@@ -37,6 +37,17 @@ public class ShopAdminController {
         return mv;
     }
 
+    @GetMapping("/shopedit.html")
+    public ModelAndView toRegister() {
+        //应该查询出地区列表放入到域中
+        ModelAndView mv = new ModelAndView();
+        mv.addObject("ares",areaService.getAllAreas());
+        mv.setViewName("shopedit.html");
+        return mv;
+    }
+
+
+
     @GetMapping("/categories")
     @ResponseBody
     public Object getCategories(@RequestParam(required = false,name = "parentId") Long parentId) {
